@@ -27,13 +27,13 @@ stages{
             parallel{
                 stage ('Deploy to Staging'){
                     steps {
-                        bat "WinSCP.exe -i C:/Users/Administrator/Jenkins/staging-linux-tomcat.pem **/target/*.war ec2-user@${params.tomcat_dev}:/var/lib/tomcats/apache-tomcat-8.5.40/webapps"
+                        bat "winscp -i C:/Users/Administrator/Jenkins/staging-linux-tomcat.pem **/target/*.war ec2-user@${params.tomcat_dev}:/var/lib/tomcats/apache-tomcat-8.5.40/webapps"
                     }
                 }
 
                 stage ("Deploy to Production"){
                     steps {
-                        bat "WinSCP.exe -i C:/Users/Administrator/Jenkins/staging-linux-tomcat.pem **/target/*.war ec2-user@${params.tomcat_prod}:/var/lib/tomcats/apache-tomcat-8.5.40/webapps"
+                        bat "winscp -i C:/Users/Administrator/Jenkins/staging-linux-tomcat.pem **/target/*.war ec2-user@${params.tomcat_prod}:/var/lib/tomcats/apache-tomcat-8.5.40/webapps"
                     }
                 }
             }
